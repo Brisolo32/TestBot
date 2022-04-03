@@ -112,5 +112,5 @@ module.exports = {
                     interaction.reply({ embeds: [searchlv] });
                 })
             }
-		}
+	}
 };
