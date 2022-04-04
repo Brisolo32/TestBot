@@ -1,5 +1,5 @@
-# TestBot123
-**A bot for Discord, with some features...**
+<h1 align="center">TestBot</h1>
+<p align="center">A bot for Discord, with some features...</p>
 
 # How to run it
 1. First off you will need [node.js](https://nodejs.org/en/) (if you have it already)<br>
