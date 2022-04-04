@@ -2,7 +2,6 @@
 **A bot for Discord, with some features...**
 
 # How to run it
-
 1. First off you will need [node.js](https://nodejs.org/en/) (if you have it already)<br>
 2. After that clone this repo
 3. Open Cmd/Powershell/Terminal in the main folder (src)
@@ -16,3 +15,6 @@
     - Or `node globaldeploycommands` to put Global slash commands
 8. Go back to the src folder and finally run `node main` to start the bot
 
+# Is there anything more in the "FAQ"
+
+**no**
