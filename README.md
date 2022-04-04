@@ -6,7 +6,7 @@
 2. After that clone this repo
 3. Open Cmd/Powershell/Terminal in the main folder (src)
 4. Open the config.json file and
-    - Insert your Guildid (Testing Server)
+    - Insert your GuildID (Testing Server)
     - Token (The thing that makes bots work)
     - ClientID (Another thing that makes bots work)
 5. Type `npm i` to fill up 1.9PB of useless files
