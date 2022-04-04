@@ -1,4 +1,4 @@
-<h1 align="center">TestBot</h1>
+<h1 align="center">TestBot123</h1>
 <p align="center">A bot for Discord, with some features...</p>
 
 # How to run it
