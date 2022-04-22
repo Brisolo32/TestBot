@@ -119,7 +119,19 @@ module.exports = {
 			"https://preview.redd.it/xen5e61tc4r81.jpg?width=640&crop=smart&auto=webp&s=0bd279a1771097bc0a9071eb444050cf951087e1",
 			"https://preview.redd.it/na8dq61l48r81.jpg?width=640&crop=smart&auto=webp&s=64ce2262c03ba8209dcd41794b2dcfd9e9f3b8b2",
 			"https://preview.redd.it/pftk1nl0sxq81.jpg?width=640&crop=smart&auto=webp&s=2f2e2df590a6c1c651f508282c00362093401cde",
-			"https://i.redd.it/p8sp3nl8cxq81.jpg"
+			"https://i.redd.it/p8sp3nl8cxq81.jpg",
+			"https://preview.redd.it/agdanapeq1v81.jpg?width=640&crop=smart&auto=webp&s=81592a3e72952f8aacf788e75bf1f935172aa94f",
+			"https://i.redd.it/mnkueat3ryu81.jpg",
+			"https://preview.redd.it/r9r3aqhde1v81.jpg?width=640&crop=smart&auto=webp&s=a60be2529b1a72f6d1fd3fae14c4edc1fddc3aa5",
+			"https://preview.redd.it/8jtk36i9r1v81.jpg?width=640&crop=smart&auto=webp&s=4402f58e52d528d8a9412f36699ddeb8f1d9f72e",
+			"https://preview.redd.it/8bu73q0r8wu81.jpg?width=640&crop=smart&auto=webp&s=1eb731a6fe4577d01517097e6129efcb9ffdfd9e",
+			"https://preview.redd.it/2tltkz5toyu81.jpg?width=640&crop=smart&auto=webp&s=7853e0dcf4bf213cdeaa657acc89b7c4a5dc82a7",
+			"https://i.redd.it/3trhunabp1v81.jpg",
+			"https://preview.redd.it/88xld8s3nxu81.jpg?width=640&crop=smart&auto=webp&s=f425a292ceb5cf500c0a5835bc8c3f2ba844d198",
+			"https://preview.redd.it/oani46reozu81.png?width=640&crop=smart&auto=webp&s=4f649e384bddf6fe3814571fb5feafc62c371bcb",
+			"https://preview.redd.it/ol247c9260v81.jpg?width=320&crop=smart&auto=webp&s=52a2c43653e698a85ebf0597ba25159157c23cef",
+			"https://preview.redd.it/3x73dsh36wu81.jpg?width=640&crop=smart&auto=webp&s=765cecb9c708aebce3c7bc4d526e6c208204a4db",
+			"https://preview.redd.it/253bao30er651.jpg?width=640&crop=smart&auto=webp&s=aa5b6f3f8f18d261d7744ba9d041c60ccc19cb0f"
 		]
     	const Resposta = Math.floor(Math.random() * Capivara.length)
     	await interaction.reply(Capivara[Resposta]);
