@@ -1,6 +1,15 @@
 <h1 align="center">TestBot123</h1>
 <p align="center">A bot for Discord, with some features...</p>
 
+<div align="center">
+    <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="NodeJS">
+    <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript">
+    <img src="https://img.shields.io/badge/Discord.JS%20v13-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Discord">
+    <a href="./LICENSE">
+        <img src="https://img.shields.io/github/license/Brisolo32/TestBot123?style=for-the-badge" alt="License">
+    </a>
+</div>
+
 # How to run it
 1. First off you will need [node.js](https://nodejs.org/en/) (if you have it already)<br>
 2. After that clone this repo
