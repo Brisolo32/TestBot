@@ -32,6 +32,18 @@ const thatsnotjapanese = {
     // AMEM COPILOT DEUS TE ABENÇOE
 }
 
+function randomcaptilization(text) {
+    let newtext = "";
+    for (let i = 0; i < text.length; i++) {
+        if (Math.random() > 0.5) {
+            newtext += text[i].toUpperCase();
+        } else {
+            newtext += text[i].toLowerCase();
+        }
+    }
+    return newtext;
+}
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("textedit")
@@ -57,7 +69,7 @@ module.exports = {
         .addSubcommand(subcommand => 
             subcommand
             .setName('randomcaps')
-            .setDescription('[TODO]')
+            .setDescription('THe qUiCK bRown Fox JuMPS oveR The LaZY dOG')
             .addStringOption(option => option.setName("text").setDescription("Texto | Text"))
             ),
         async execute(interaction) {
@@ -78,8 +90,8 @@ module.exports = {
                 interaction.reply(`${result}`);
             } else if (interaction.options.getSubcommand() === "randomcaps") {
                 const string1 = interaction.options.getString('text')
-                const rndCaps = text.toLowerCase().split('').map(c => Math.random() < 0.5 ? c : c.toUpperCase()).join('');
-                interaction.reply(`${rndCaps}`);
+                const text = string1;
+                interaction.reply(`${randomcaptilization(text)}`);
             }
         }
 }
