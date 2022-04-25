@@ -1,15 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require('discord.js');
-const { Player } = require("discord-music-player")
-const ytsearch = require('yt-search');
-const client = require('../main.js')
 
-const player = new Player(client, {
-    leaveOnEmpty: false,
-    leaveOnEnd: false,
-});
-
-client.player = player;
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("music")
@@ -57,6 +48,15 @@ module.exports = {
                 .setDescription("Mostra a musica atual | Shows the current song")     
         ),
         async execute (interaction){
+            const { Player } = require("discord-music-player")
+            const ytsearch = require('yt-search');
+            const player = new Player(client, {
+                leaveOnEmpty: true,
+                leaveOnEnd: true,
+            });
+
+            client.player = player;
+
             const musicnm = interaction.options.getString("song");
             const channel = interaction.member.voice.channel;
             if (!channel) return interaction.reply({ content: "Você precisa estar em um canal de voz para usar este comando\nYou need to be in a voice channel to use this command", ephemeral: true });
