@@ -1,5 +1,5 @@
 # Tasks
 
-- [ ] Make /randwiki use the wikiHow API (AKA: MediaWiki API)
+- [X] Make /randwiki use the wikiHow API (AKA: MediaWiki API)
 - [ ] Fix /music remove
-- [ ] Add moderation commands
+- [X] Add moderation commands
