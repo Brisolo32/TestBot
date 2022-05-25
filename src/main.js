@@ -5,7 +5,7 @@
 
 // Pegue as classes nessesárias para funcionar
 const fs = require('node:fs');
-const { Client, Collection, Intents, Guild, Formatters, MessageEmbed } = require('discord.js');
+const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 const { token, clientId } = require('./config.json');
 
 // ----------------------------------------------------------------------- //
@@ -49,8 +49,17 @@ client.on('interactionCreate', async interaction => {
   try {
     await command.execute(interaction);
   } catch (error) {
+    const errorembed = new MessageEmbed()
+      .setTitle('Error')
+      .setDescription(`An error occurred while executing this command`)
+      .addFields(
+        { name: 'Log', value: `${error}` },
+      )
+      .setColor(`${colours.error}`)
+      .setFooter({ text: `Contact the Dev at Brisolo32#2968` })
+      .setTimestamp();
     console.error(error);
-    await interaction.reply({ content: 'Um erro acontesceu | An error occured', ephemeral: true });
+    await interaction.reply({ embeds: [errorembed], ephemeral: true });
   }
   const { commandName } = interaction;
 });

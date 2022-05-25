@@ -5,6 +5,7 @@ const { getProfile } = require('../functions/getProfile.js');
 const { getSearch } = require('../functions/getSearch.js');
 const { getCreatorLB } = require('../functions/getCreatorLB.js');
 const { getPlayerLB } = require('../functions/getPlayerLB.js');
+const { colours } = require('../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -112,7 +113,7 @@ module.exports = {
                             break;
                     }
                     const searchlv = new MessageEmbed()
-                        .setColor('#ff9900')
+                        .setColor(`${colours.success}`)
                         .setAuthor({ name: 'Geometry Dash Levels', iconURL: 'https://i.redd.it/r6vfj5fbktg41.jpg' })
                         .setTitle(`${levelname} by ${lvauthor}`)
                         .addFields(
@@ -145,7 +146,7 @@ module.exports = {
                     var userDemons = res.demons;
                     
                     const account = new MessageEmbed()
-                        .setColor('#ff9900')
+                        .setColor(`${colours.success}`)
                         .setAuthor({ name: 'Geometry Dash Players', iconURL: 'https://i.redd.it/r6vfj5fbktg41.jpg' })
                         .setTitle(`${userName}`)
                         .addFields(
@@ -169,7 +170,7 @@ module.exports = {
                     const lvdifficulty = res.map(x => x.difficulty);  
         
                     const searchlv = new MessageEmbed()
-                        .setColor("#ff9900")
+                        .setColor(`${colours.success}`)
                         .setAuthor({ name: "Geometry Dash Search Engine", iconURL: "https://i.redd.it/r6vfj5fbktg41.jpg" })
                         .setTitle(`${search}`)
                         .setDescription("**=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=**")
@@ -192,7 +193,7 @@ module.exports = {
                     const lbid = res.map(x => x.accountID);
 
                     const playerlb = new MessageEmbed()
-                        .setColor("#ff9900")
+                        .setColor(`${colours.success}`)
                         .setAuthor({ name: "Geometry Dash Player Leaderboard", iconURL: "https://i.redd.it/r6vfj5fbktg41.jpg" })
                         .setTitle(`Top 10 Players`)
                         .setDescription("**=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=**")
@@ -246,7 +247,7 @@ module.exports = {
                 const type = interaction.options.getString("type");
 
                 const icon = new MessageEmbed()
-                    .setColor("#ff9900")
+                    .setColor(`${colours.success}`)
                     .setAuthor({ name: "Geometry Dash Icon", iconURL: "https://i.redd.it/r6vfj5fbktg41.jpg" })
                     .setTitle(`${name}`)
                     .setImage(`https://gdbrowser.com/icon/${name}?form=${type}`)

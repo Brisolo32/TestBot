@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("roll")
-        .setDescription("O dado mais básico possivel | The simplest die possible"),
+        .setDescription("The simplest die possible"),
 	  async execute (interaction) {
         const Numbers = [
            "1 :game_die:",

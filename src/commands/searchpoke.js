@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
 const { getPokemon } = require("../functions/getPokemon.js");
+const { colours } = require("../config.json");
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -30,7 +31,7 @@ module.exports = {
 
                 const pokembed = new MessageEmbed()
                     .setTitle(`${pokenameupper}`)
-                    .setColor('#0099ff')
+                    .setColor(`${colours.success}`)
                     .addFields(
                         { name: 'Number', value: `${res.id}`, inline: true },
                         { name: 'Type', value: `${poketypeupper}`, inline: true },
@@ -51,7 +52,7 @@ module.exports = {
 
                 const pokembed = new MessageEmbed()
                     .setTitle(`${pokenameupper}`)
-                    .setColor('#0099ff')
+                    .setColor(`${colours.success}`)
                     .addFields(
                         { name: 'Number', value: `${res.id}`, inline: true },
                         { name: 'Type', value: `${poketypeupper}`, inline: true },

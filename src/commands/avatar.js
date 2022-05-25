@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
+const { colours } = require('../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -17,7 +18,7 @@ module.exports = {
             .setTitle(`Avatar of ${user.user.username}`)
             .setImage(`${user.user.displayAvatarURL({ format: "png" })}`)
             .setFooter({ text: `${user.user.tag}`, iconURL: `${user.user.displayAvatarURL({ format: "png" })}` })
-            .setColor("#ff8c00");
+            .setColor(`${colours.success}`);
 
         interaction.reply({ embeds: [avatar] });
     }

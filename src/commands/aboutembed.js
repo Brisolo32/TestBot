@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { colours } = require('../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -7,7 +8,7 @@ module.exports = {
         .setDescription("Sobre o Bot"),
 	  async execute (interaction) {
         const about = new MessageEmbed()
-            .setColor('#ffffff')
+            .setColor(`${colours.info}`)
             .setAuthor({ name: 'Sobre o bot', iconURL: 'https://cdn.discordapp.com/app-icons/922283721791504426/ba24abb016d5986dc74643ad5bbf6b70.png?size=256' })
             .setDescription('EN-US\nBot Creator: Brisolo32#2968\nSome ideas: Sussy_Oreo#6827\nBig Help: StackOverflow\nGdBrowser: GDColon\nCapybara images: r/capybara')
             .setThumbnail('https://cdn.discordapp.com/app-icons/922283721791504426/ba24abb016d5986dc74643ad5bbf6b70.png?size=256')

@@ -1,6 +1,7 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
+const { SlashCommandBuilder, codeBlock } = require("@discordjs/builders");
 const { MessageEmbed } = require('discord.js');
-/* const { Player } = require("discord-music-player")
+const { colours } = require('../config.json');
+const { Player } = require("discord-music-player")
 const ytsearch = require('yt-search');
 const client = require('../main.js')
 
@@ -9,7 +10,7 @@ const player = new Player(client, {
     leaveOnEnd: false,
 });
 
-client.player = player; */
+client.player = player;
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("music")
@@ -18,13 +19,13 @@ module.exports = {
             subcommand
                 .setName("play")
                 .setDescription("Plays a song")
-                .addStringOption(option => option.setName("song").setDescription("O nome da musica ou o link da musica").setRequired(true))
+                .addStringOption(option => option.setName("song").setDescription("The music's name or URL").setRequired(true))
         )
         .addSubcommand(subcommand =>
             subcommand
                 .setName("remove")
                 .setDescription("Removes a song from the queue")
-                .addIntegerOption(option => option.setName("song").setDescription("O numero da musica | The music's number").setRequired(true))
+                .addStringOption(option => option.setName("song").setDescription("The music's number").setRequired(true))
         )
         .addSubcommand(subcommand =>
             subcommand
@@ -60,7 +61,7 @@ module.exports = {
             const musicnm = interaction.options.getString("song");
             const channel = interaction.member.voice.channel;
             if (!channel) return interaction.reply({ content: "You need to be in a voice channel to use this command", ephemeral: true });
-            let guildQueue = player.getQueue('MWzjFp');
+            let guildQueue = player.getQueue(interaction.guild.id);
             
                 switch (interaction.options.getSubcommand()) {
                     case "play":
@@ -68,10 +69,14 @@ module.exports = {
                         var ytauthor = yt.videos[0].author.name;
                         var ytname = yt.videos[0].title;
                         var ytimestamp = yt.videos[0].timestamp;
+
+                        const loadinge = new MessageEmbed()
+                            .setColor(`${colours.loading}`)
+                            .setTitle(`Loading <a:testbotassets_loadinggiff:966861157140946954>>`)
             
-                        interaction.reply(`Loading <a:testbotassets_loadinggiff:966861157140946954>`);
+                        interaction.reply({ embeds: [loadinge] });
             
-                        let queue = player.createQueue('MWzjFp');
+                        let queue = player.createQueue(interaction.guild.id);
                         await queue.join(channel);
                         let song = await queue.play(musicnm).catch(_ => {
                             if (!guildQueue) {
@@ -82,12 +87,12 @@ module.exports = {
                         const embed = new MessageEmbed()
                             .setTitle("Playing")
                             .addFields(
-                                { name: "Nome | Name", value: `${ytname}`},
-                                { name: "Autor | Author", value: `${ytauthor}`},
-                                { name: "Tempo | Time", value: `${ytimestamp}`},
-                                { name: "Adicionado por | Added by", value: `${interaction.member.displayName}`},
+                                { name: "Name", value: `${ytname}`},
+                                { name: "Author", value: `${ytauthor}`},
+                                { name: "Time", value: `${ytimestamp}`},
+                                { name: "Added by", value: `${interaction.member.displayName}`},
                             )
-                            .setColor("#ff0000")
+                            .setColor(`${colours.success}`)
                         
                         interaction.editReply({ content: 'ㅤ', embeds: [embed] });
                         break;
@@ -97,7 +102,7 @@ module.exports = {
                         const pauseembed = new MessageEmbed()
                             .setTitle("Paused")
                             .setDescription('Paused the music')
-                            .setColor("#ff0000")
+                            .setColor(`${colours.success}`)
                         await interaction.reply({ embeds: [pauseembed] });
                         break;
                     case "resume":
@@ -105,8 +110,8 @@ module.exports = {
             
                         const resumeembed = new MessageEmbed()
                             .setTitle("Resumed")
-                            .setDescription('Resumiu a musica | Resumed the music')
-                            .setColor("#ff0000")
+                            .setDescription('Resumed the music')
+                            .setColor(`${colours.success}`)
                         
                         await interaction.reply({ embeds: [resumeembed] });
                         break;
@@ -114,18 +119,18 @@ module.exports = {
                         guildQueue.stop();
             
                         const stopembed = new MessageEmbed()
-                            .setTitle("Parado | Stopped")
+                            .setTitle("Stopped")
                             .setDescription("Audio player went kaboom")
-                            .setColor("#ff0000")
+                            .setColor(`${colours.success}`)
                         await interaction.reply({ embeds: [stopembed] });
                         break;
                     case "skip":
                         guildQueue.skip();
             
                         const skipembed = new MessageEmbed()
-                            .setTitle("Pulado | Skipped")
+                            .setTitle("Skipped")
                             .setDescription("Skipped the music")
-                            .setColor("#ff0000")
+                            .setColor(`${colours.success}`)
             
                         await interaction.reply({ embeds: [skipembed] });
                         break;
@@ -135,18 +140,25 @@ module.exports = {
                         let response = ``;
                 
                         for (let i = 0; i < getqueue.songs.length; i++) {
-                            response += `${i + 1}. ${getqueue.songs[i].name} - ${getqueue.songs[i].author}\n`;
+                            response += `${i}) ${getqueue.songs[i].name}\n`;
+                            // Replace the "0)" with "Now playing" and add another line break using regex
+                            if (i === 0) {
+                                response = response.replace(/0\)/g, `# Now playing: `);
+                                response += `\n`;
+                            }
+
+                            res = codeBlock('cs', response);
                         }
             
                         const queueembed = new MessageEmbed()
-                            .setTitle("Fila | Queue")
-                            .setDescription(response)
-                            .setColor("#ff0000")
+                            .setTitle("Queue")
+                            .setDescription(res)
+                            .setColor(`${colours.success}`)
                         await interaction.reply({ embeds: [queueembed] });
                         break;
                     case "remove":
-                        const number = interaction.options.getInteger("song");
-                        guildQueue.remove(number);
+                        const number = interaction.options.getString("song");
+                        guildQueue.remove(parseInt(number));
             
                         interaction.reply({ content: `Removed ${number} from the queue` });
                         break;
@@ -155,18 +167,18 @@ module.exports = {
                         const nowplayingembed = new MessageEmbed()
                             .setTitle("Now playing")
                             .addFields(
-                                { name: "Nome | Name", value: `${guildQueue.nowPlaying.name}`},
-                                { name: "Autor | Author", value: `${guildQueue.nowPlaying.author}`},
-                                { name: "Tempo | Time", value: `${guildQueue.nowPlaying.duration}`},
-                                { name: "Adicionado por | Added by", value: `${interaction.member.displayName}`},
-                                { name: "Progresso | Progress", value: `${progressbar}`},
+                                { name: "Name", value: `${guildQueue.nowPlaying.name}`},
+                                { name: "Author", value: `${guildQueue.nowPlaying.author}`},
+                                { name: "Time", value: `${guildQueue.nowPlaying.duration}`},
+                                { name: "Added by", value: `${interaction.member.displayName}`},
+                                { name: "Progress", value: `${progressbar}`},
                             )
-                            .setColor("#ff0000")
+                            .setColor(`${colours.success}`)
             
                         interaction.reply({ embeds: [nowplayingembed] });
                         break;
                     default:
-                        console.log('how the fuck did someone ran this?')
+                        console.log('how the fuck did someone broke this?')
                         break;
                 }
             

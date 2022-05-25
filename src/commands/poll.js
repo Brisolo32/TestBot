@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
+const { colours } = require('../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -56,7 +57,7 @@ module.exports = {
         const polloption1 = interaction.options.getString('option1');
         const polloption2 = interaction.options.getString('option2');
         const pollembed = new MessageEmbed()
-            .setColor('#ff0000')
+            .setColor(`${colours.success}`)
             .setAuthor({ name: 'Poll', iconURL: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/322/party-popper_1f389.png' })
             .setDescription(`${pollname}`)
         const message = await interaction.reply({ embeds: [pollembed], fetchReply: true });
