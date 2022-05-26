@@ -1,0 +1,13 @@
+{
+    "guildId": "Never gonna give you up",
+    "clientId": "Never gonna let you down",
+    "devClientId": "Never gonna run around and desert you",
+    "token": "Never gonna make you cry, never gonna say goodbye",
+    "devToken": "Never gonna tell a lie and hurt you",
+    "colours": {
+        "error": "#db0f0f",
+        "loading": "#ff8000",
+        "success": "#22d60b",
+        "info": "#00b3ff"
+    }
+}
