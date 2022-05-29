@@ -72,7 +72,7 @@ module.exports = {
 
                         const loadinge = new MessageEmbed()
                             .setColor(`${colours.loading}`)
-                            .setTitle(`Loading <a:testbotassets_loadinggiff:966861157140946954>>`)
+                            .setTitle(`Loading <a:testbotassets_loadinggiff:966861157140946954>`)
             
                         interaction.reply({ embeds: [loadinge] });
             
@@ -85,12 +85,12 @@ module.exports = {
                         })
             
                         const embed = new MessageEmbed()
-                            .setTitle("Playing")
+                            .setTitle("Added to the queue")
                             .addFields(
-                                { name: "Name", value: `${ytname}`},
-                                { name: "Author", value: `${ytauthor}`},
-                                { name: "Time", value: `${ytimestamp}`},
-                                { name: "Added by", value: `${interaction.member.displayName}`},
+                                { name: "Name", value: `${ytname}`, inline: true },
+                                { name: "Author", value: `${ytauthor}`, inline: true },
+                                { name: "Time", value: `${ytimestamp}`, inline: true },
+                                { name: "Added by", value: `${interaction.member.displayName}`, inline: true },
                             )
                             .setColor(`${colours.success}`)
                         
