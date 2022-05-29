@@ -20,5 +20,33 @@ Just add the bot to your Discord Server and have fun!
 | Green Embed | Command ran Successfully |
 | Cyan Embed | Information about something |
 
+# Running on your own / Making a Fork
+
+If you want to run on your own you will need to do this steps
+
+1. Install Node if you haven't
+2. Clone this Repo with `git clone 'https://github.com/Brisolo32/TestBot123.git'`
+3. Move to the cloned directory and `src` folder
+4. In there create a `config.json` and add the following values like this
+```json
+{
+    "guildId": "Your development guild here",
+    "clientId": "Your client id (Application id) here",
+    "token": "Your token here",
+    "colours": {
+        // This colours can be modified for your liking
+        // But they need to be here
+        "error": "#db0f0f",
+        "loading": "#ff8000",
+        "success": "#22d60b",
+        "info": "#00b3ff"
+    }
+}
+```
+5. Run `npm i` to install 18TB of mostly useless packages
+6. Finally, run `node main` or `node .` to run
+
+
 # Contribuiting: 
+
 Contribuitions are always welcome! You can contribute to this project by Forking it and (After you modified it) making a Pull Request
