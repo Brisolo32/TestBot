@@ -1,0 +1,14 @@
+Patch-Notes v2.21
+
+Bug Fixes/Deletions:
+- Removed /gdbrowser icon due to it not working
+- Removed /searchpoke due to being broken
+- Removed /music due to it being *VERY* broken
+- Fixed summary being broken on /randwiki
+
+New Features:
+- Added support for external images on /morrepraga
+- Added support for bigger dice on /roll
+- oh yeah also added more capybara images lol
+- /textgenerate: generate text using OpenAI
+- /clear: deletes text automatically
